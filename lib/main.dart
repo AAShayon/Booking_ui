@@ -82,10 +82,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(BookingApp());
+  runApp(const BookingApp());
 }
 
 class BookingApp extends StatelessWidget {
+  const BookingApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -93,22 +95,24 @@ class BookingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BookingScreen(),
+      home: const BookingScreen(),
     );
   }
 }
 
 class BookingScreen extends StatelessWidget {
+  const BookingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book Your Seat'),
+        title: const Text('Book Your Seat'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
@@ -130,7 +134,7 @@ class SeatButton extends StatefulWidget {
   final String seat;
   final bool addSpacer;
 
-  SeatButton(this.seat, this.addSpacer);
+  const SeatButton(this.seat, this.addSpacer, {super.key});
 
   @override
   _SeatButtonState createState() => _SeatButtonState();
@@ -151,14 +155,14 @@ class _SeatButtonState extends State<SeatButton> {
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: _isSelected ? Colors.green : Colors.grey,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(35),
           ),
           child: Text(
             widget.seat,
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
         ),
-        if (widget.addSpacer) SizedBox(height: 10),
+        if (widget.addSpacer) const SizedBox(height: 5),
       ],
     );
   }
